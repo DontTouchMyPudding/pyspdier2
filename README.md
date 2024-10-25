@@ -41,43 +41,19 @@ class Handler(BaseHandler):
         }
 ```
 
+# Run project step
+python 环境 python3.8.5
+```bash
+pip install -r requirements.txt
+```
 
-Installation
-------------
+node 环境 node18.0.0
+```
+yarn add puppeteer express
+```
 
-* `pip install pyspider`
-* run command `pyspider`, visit [http://localhost:5000/](http://localhost:5000/)
+运行程序
+```bash
+python run.py
+```
 
-**WARNING:** WebUI is open to the public by default, it can be used to execute any command which may harm your system. Please use it in an internal network or [enable `need-auth` for webui](http://docs.pyspider.org/en/latest/Command-Line/#-config).
-
-Quickstart: [http://docs.pyspider.org/en/latest/Quickstart/](http://docs.pyspider.org/en/latest/Quickstart/)
-
-Contribute
-----------
-
-* Use It
-* Open [Issue], send PR
-* [User Group]
-* [中文问答](http://segmentfault.com/t/pyspider)
-
-
-TODO
-----
-
-### v0.4.0
-
-- [ ] a visual scraping interface like [portia](https://github.com/scrapinghub/portia)
-
-
-License
--------
-Licensed under the Apache License, Version 2.0
-
-
-[Build Status]:         https://img.shields.io/travis/binux/pyspider/master.svg?style=flat
-[Travis CI]:            https://travis-ci.org/binux/pyspider
-[Coverage Status]:      https://img.shields.io/coveralls/binux/pyspider.svg?branch=master&style=flat
-[Coverage]:             https://coveralls.io/r/binux/pyspider
-[Try]:                  https://img.shields.io/badge/try-pyspider-blue.svg?style=flat
-[Issue]:                https://github.com/binux/pyspider/issues
-[User Group]:           https://groups.google.com/group/pyspider-users
