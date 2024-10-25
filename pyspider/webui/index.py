@@ -10,10 +10,7 @@ import socket
 from six import iteritems, itervalues
 from flask import render_template, request, json
 
-try:
-    import flask_login as login
-except ImportError:
-    from flask.ext import login
+import flask_login as login
 
 from .app import app
 

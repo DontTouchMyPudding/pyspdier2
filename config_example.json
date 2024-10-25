@@ -1,8 +1,8 @@
 {
-  "taskdb": "couchdb+taskdb://user:password@couchdb:5984",
-  "projectdb": "couchdb+projectdb://user:password@couchdb:5984",
-  "resultdb": "couchdb+resultdb://user:password@couchdb:5984",
-  "message_queue": "amqp://rabbitmq:5672/%2F",
+  "taskdb": "mysql://user:password@localhost:3006/taskdb",
+  "projectdb": "mysql://user:password@localhost:3006/projectdb",
+  "resultdb": "mysql://user:password@localhost:3006/resultdb",
+  "message_queue": "amqp://guest:guest@localhost:5672/%2F",
   "webui": {
     "username": "username",
     "password": "password",

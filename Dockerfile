@@ -1,4 +1,4 @@
-FROM python:3.6
+FROM python:3.8.5
 MAINTAINER binux <roy@binux.me>
 
 # install phantomjs
@@ -12,12 +12,15 @@ RUN mkdir -p /opt/phantomjs \
 ENV OPENSSL_CONF=/etc/ssl/
 
 # install nodejs
-ENV NODEJS_VERSION=8.15.0 \
+ENV NODEJS_VERSION=18.0.0 \
     PATH=$PATH:/opt/node/bin
 WORKDIR "/opt/node"
 RUN apt-get -qq update && apt-get -qq install -y curl ca-certificates libx11-xcb1 libxtst6 libnss3 libasound2 libatk-bridge2.0-0 libgtk-3-0 --no-install-recommends && \
     curl -sL https://nodejs.org/dist/v${NODEJS_VERSION}/node-v${NODEJS_VERSION}-linux-x64.tar.gz | tar xz --strip-components=1 && \
     rm -rf /var/lib/apt/lists/*
+
+COPY ./pyspider/webui/static/package.json /opt/node/package.json
+    
 RUN npm install puppeteer express
 
 # install requirements

@@ -16,6 +16,7 @@ from six.moves.urllib.parse import urljoin
 from flask import Flask
 from pyspider.fetcher import tornado_fetcher
 
+
 if os.name == 'nt':
     import mimetypes
     mimetypes.add_type("text/css", ".css", True)
@@ -23,6 +24,8 @@ if os.name == 'nt':
 
 class QuitableFlask(Flask):
     """Add quit() method to Flask object"""
+    def __init__(self, *args,**kwargs):
+        super().__init__(*args,**kwargs)
 
     @property
     def logger(self):
@@ -61,11 +64,10 @@ class QuitableFlask(Flask):
             logger.warning('WebDav interface not enabled: %r', e)
             dav_app = None
         if dav_app:
-            from werkzeug.wsgi import DispatcherMiddleware
+            from werkzeug.middleware.dispatcher import DispatcherMiddleware
             application = DispatcherMiddleware(application, {
                 '/dav': dav_app
             })
-
         container = tornado.wsgi.WSGIContainer(application)
         self.http_server = tornado.httpserver.HTTPServer(container)
         self.http_server.listen(port, hostname)
@@ -82,6 +84,7 @@ class QuitableFlask(Flask):
             self.ioloop.add_callback(self.http_server.stop)
             self.ioloop.add_callback(self.ioloop.stop)
         self.logger.info('webui exiting...')
+
 
 
 app = QuitableFlask('webui',
