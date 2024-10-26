@@ -1,5 +1,4 @@
 FROM python:3.8.5
-MAINTAINER binux <roy@binux.me>
 
 # install phantomjs
 RUN mkdir -p /opt/phantomjs \
@@ -19,7 +18,7 @@ RUN apt-get -qq update && apt-get -qq install -y curl ca-certificates libx11-xcb
     curl -sL https://nodejs.org/dist/v${NODEJS_VERSION}/node-v${NODEJS_VERSION}-linux-x64.tar.gz | tar xz --strip-components=1 && \
     rm -rf /var/lib/apt/lists/*
 
-COPY ./pyspider/webui/static/package.json /opt/node/package.json
+# COPY ./pyspider/webui/static/package.json /opt/node/package.json
     
 RUN npm install puppeteer express
 
@@ -35,7 +34,7 @@ WORKDIR /opt/pyspider
 RUN pip install -e .[all]
 
 # Create a symbolic link to node_modules
-RUN ln -s /opt/node/node_modules ./node_modules
+RUN ln -s /opt/node/node_modules ./node_modulesr
 
 #VOLUME ["/opt/pyspider"]
 ENTRYPOINT ["pyspider"]

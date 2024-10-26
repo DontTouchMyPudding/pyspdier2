@@ -18,20 +18,20 @@ with open(path.join(here, 'README.md'), encoding='utf-8') as f:
 import pyspider
 
 install_requires = [
-    'Flask==0.10',
-    'Jinja2==2.7',
+    'Flask==2.2.5',
+    'Jinja2==3.1.4',
     'chardet==3.0.4',
     'cssselect==0.9',
-    "lxml==4.3.3",
-    'pycurl==7.43.0.3',
+    "lxml==5.3.0",
+    'pycurl==7.45.3',
     'requests==2.24.0',
-    'Flask-Login==0.2.11',
+    'Flask-Login==0.6.3',
     'u-msgpack-python==1.6',
-    'click==3.3',
+    'click==8.0',
     'six==1.10.0',
     'tblib==1.4.0',
     'wsgidav==2.3.0',
-    'tornado>=3.2,<=4.5.3',
+    'tornado==4.5.3',
     'pyquery',
 ]
 

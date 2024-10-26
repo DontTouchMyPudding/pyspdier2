@@ -57,3 +57,9 @@ yarn add puppeteer express
 python run.py
 ```
 
+或者
+
+```
+pip install -e .[all]
+pyspider
+```
