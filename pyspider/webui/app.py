@@ -8,6 +8,7 @@
 import os
 import sys
 import logging
+
 logger = logging.getLogger("webui")
 
 from six import reraise
@@ -16,16 +17,17 @@ from six.moves.urllib.parse import urljoin
 from flask import Flask
 from pyspider.fetcher import tornado_fetcher
 
-
 if os.name == 'nt':
     import mimetypes
+
     mimetypes.add_type("text/css", ".css", True)
 
 
 class QuitableFlask(Flask):
     """Add quit() method to Flask object"""
-    def __init__(self, *args,**kwargs):
-        super().__init__(*args,**kwargs)
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
 
     @property
     def logger(self):
@@ -86,13 +88,14 @@ class QuitableFlask(Flask):
         self.logger.info('webui exiting...')
 
 
-
 app = QuitableFlask('webui',
                     static_folder=os.path.join(os.path.dirname(__file__), 'static'),
                     template_folder=os.path.join(os.path.dirname(__file__), 'templates'))
 app.secret_key = os.urandom(24)
 app.jinja_env.line_statement_prefix = '#'
 app.jinja_env.globals.update(builtins.__dict__)
+app.jinja_env.auto_reload = True
+app.config['TEMPLATES_AUTO_RELOAD'] = True
 
 app.config.update({
     'fetch': lambda x: tornado_fetcher.Fetcher(None, None, async_mode=False).fetch(x),
@@ -117,4 +120,6 @@ def cdn_url_handler(error, endpoint, kwargs):
             reraise(exc_type, exc_value, tb)
         else:
             raise error
+
+
 app.handle_url_build_error = cdn_url_handler

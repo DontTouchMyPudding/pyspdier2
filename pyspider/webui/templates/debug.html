@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="utf-8">
     <title>{{ project_name }} - Debugger - pyspider</title>
     <!--[if lt IE 9]>
-      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 
     <meta name="description" content="pyspider - debugger - {{ project_name }}">
@@ -33,76 +33,185 @@
     <script src="{{ url_for('cdn', path='codemirror/5.20.2/addon/lint/json-lint.min.js') }}"></script>
     <script src="{{ url_for('cdn', path='codemirror/2.36.0/formatting.min.js') }}"></script>
     <script src="{{ url_for('cdn', path='URI.js/1.11.2/URI.min.js') }}"></script>
-  </head>
+</head>
 
-  <body>
-    <section id="control">
-      <div class="title pull-left"><a href="/">pyspider</a> &gt; {{ project_name }}</div>
-      <div class="pull-right">
+<body>
+<section id="control">
+    <div class="title pull-left"><a href="/">pyspider</a> &gt; {{ project_name }}</div>
+    <div class="pull-right">
         <a href="http://docs.pyspider.org/" target="_blank">Documentation</a>
         <span class="webdav-btn">WebDAV Mode</span>
-      </div>
-    </section>
-    <section id="editarea">
-      <div id="left-area" class="debug-panel" style="right: 50%">
+    </div>
+</section>
+<section id="editarea">
+    <div id="left-area" class="debug-panel" style="right: 50%">
         <div id="task-panel">
-          <div id="task-editor" class="editor">
-            <div id="run-task-btn">run</div>
-            <div id="undo-redo-btn-group">
-              <a href="javascript:;" id="undo-btn"> &lt; </a>|<a href="javascript:;" id="redo-btn">&gt; </a>
-              <span id="history-wrap" style="display: none;">|<a target=_blank id="history-link">history</a></span>
+            <div id="task-editor" class="editor">
+                <div id="run-task-btn">run</div>
+                <div id="undo-redo-btn-group">
+                    <a href="javascript:;" id="undo-btn"> &lt; </a>|<a href="javascript:;" id="redo-btn">&gt; </a>
+                    <span id="history-wrap" style="display: none;">|<a target=_blank
+                                                                       id="history-link">history</a></span>
+                </div>
             </div>
-          </div>
-          <div id="python-log" style="display: none;">
-            <pre style="display: none;"></pre>
-            <div id="python-log-show"></div>
-          </div>
-          <div id="debug-tabs">
-            <div id="tab-web" class="tab" style="display: none;">
-              <div id="css-selector-helper">
-                <input class="copy-selector-input" />
-                <button class="btn copy-selector"><i class="fa fa-clipboard" title="copy css selector"></i></button>
-                <button class="btn add-to-editor"><i class="fa fa-arrow-right" title="add to editor"></i></button>
-              </div>
-              <div class="iframe-box"></div>
+            <div id="python-log" style="display: none;">
+                <pre style="display: none;"></pre>
+                <div id="python-log-show"></div>
             </div>
-            <div id="tab-html" class="tab" style="display: none;"><pre class="cm-s-default"></pre></div>
-            <div id="tab-follows" class="tab">
-              {# <div class="newtask">
+            <div id="debug-tabs">
+                <div id="tab-web" class="tab" style="display: none;">
+                    <div id="css-selector-helper">
+                        <input class="copy-selector-input"/>
+                        <button class="btn copy-selector"><i class="fa fa-clipboard" title="copy css selector"></i>
+                        </button>
+                        <button class="btn add-to-editor"><i class="fa fa-arrow-right" title="add to editor"></i>
+                        </button>
+                    </div>
+                    <div class="iframe-box"></div>
+                </div>
+                <div id="tab-html" class="tab" style="display: none;">
+                    <pre class="cm-s-default"></pre>
+                </div>
+                <div id="tab-follows" class="tab">
+                    {# <div class="newtask">
                 <span class="task-callback">__callback__</span> &gt; <span class="task-url">__url__</span>
                 <div class="task-run"><i class="fa fa-play"></i></div>
                 <div class="task-more"> <i class="fa fa-ellipsis-h"></i> </div>
               </div> #}
+                </div>
+                <div id="tab-messages" class="tab" style="display: none;">
+                    <pre class="cm-s-default"></pre>
+                </div>
             </div>
-            <div id="tab-messages" class="tab" style="display: none;">
-              <pre class="cm-s-default"></pre>
-            </div>
-          </div>
         </div>
         <ul id="tab-control">
-          <li data-id="tab-messages">messages<span class="num" style="display: none;"></span></li>
-          <li data-id="tab-follows">follows<span class="num" style="display: none;"></span></li>
-          <li data-id="tab-html">html</li>
-          <li data-id="tab-web" class="active">web</li>
-          <li id="J-enable-css-selector-helper">enable css selector helper</li>
+            <li data-id="tab-messages">messages<span class="num" style="display: none;"></span></li>
+            <li data-id="tab-follows">follows<span class="num" style="display: none;"></span></li>
+            <li data-id="tab-html">html</li>
+            <li data-id="tab-web" class="active">web</li>
+            <li id="J-enable-css-selector-helper">enable css selector helper</li>
         </ul>
         <div class="overlay" style="display: none;"></div>
-      </div>
+    </div>
 
-      <div id="right-area" class="debug-panel" style="left: 50%">
+    <div id="right-area" class="debug-panel" style="left: 50%">
         <div id="python-editor" class="editor focus">
-          <div id="save-task-btn">save</div>
+            <div id="config-task-btn">config</div>
+            <div id="code-task-btn">code</div>
+            <div id="save-task-btn">save</div>
+        </div>
+        <div id="popup">
+            <form class="form">
+                <section class="basic-config">
+                    <h3>基础配置项</h3>
+                    <section class="form-block">
+                        <section class="form-item">
+                            <label>URL</label>
+                            <input type="text"/>
+                        </section>
+                        <section class="form-item">
+                            <label>浏览器</label>
+                            <input type="text"/>
+                        </section>
+                        <section class="form-item">
+                            <label>超时时间</label>
+                            <input type="text"/>
+                        </section>
+                        <section class="form-item">
+                            <label>使用代理</label>
+                            <input type="text"/>
+                        </section>
+                        <section class="form-item">
+                            <label>翻页数</label>
+                            <input type="text"/>
+                        </section>
+                    </section>
+                </section>
+                <section class="list-config">
+                    <h3>列表配置项</h3>
+                    <section class="form-block">
+                        <section class="form-item">
+                            <label>详情入口</label>
+                            <input type="text"/>
+                        </section>
+                        <section class="form-item">
+                            <label>下页入口</label>
+                            <input type="text"/>
+                        </section>
+                        <section class="form-item">
+                            <label>标题选择</label>
+                            <input type="text"/>
+                        </section>
+                        <section class="form-item">
+                            <label>发布日期</label>
+                            <input type="text"/>
+                        </section>
+                        <section class="form-item">
+                            <label>点击选择</label>
+                            <input type="text"/>
+                        </section>
+                        <section class="form-item">
+                            <label>点击等待</label>
+                            <input type="text"/>
+                        </section>
+                        <section class="form-item">
+                            <label>翻页等待</label>
+                            <input type="text"/>
+                        </section>
+                        <section class="form-item">
+                            <label>子窗序号</label>
+                            <input type="text"/>
+                        </section>
+                    </section>
+
+                </section>
+                <section class="detail-config">
+                    <h3>详情配置项</h3>
+                    <section class="form-block">
+                        <section class="form-item">
+                            <label>内容选择</label>
+                            <input type="text"/>
+                        </section>
+                        <section class="form-item">
+                            <label>文件选择</label>
+                            <input type="text"/>
+                        </section>
+                        <section class="form-item">
+                            <label>标题选择</label>
+                            <input type="text"/>
+                        </section>
+                        <section class="form-item">
+                            <label>发布日期</label>
+                            <input type="text"/>
+                        </section>
+                        <section class="form-item">
+                            <label>等待选择</label>
+                            <input type="text"/>
+                        </section>
+                        <section class="form-item">
+                            <label>强制等待</label>
+                            <input type="text"/>
+                        </section>
+                        <section class="form-item">
+                            <label>子窗序号</label>
+                            <input type="text"/>
+                        </section>
+                    </section>
+
+                </section>
+            </form>
         </div>
         <div class="overlay" style="display: none;"></div>
-      </div>
-    </section>
 
-    <script>
-      var task_content = {{ task | tojson | tojson | safe }};
-      var script_content = {{ script | tojson | safe }};
-    </script>
-    <script src="{{ url_for('static', filename='debug.min.js') }}"></script>
-  </body>
+    </div>
+</section>
+
+<script>
+    var task_content = {{ task | tojson | tojson | safe }};
+    var script_content = {{ script | tojson | safe }};
+</script>
+<script src="{{ url_for('static', filename='debug.min.js') }}"></script>
+</body>
 </html>
 <!-- vim: set et sw=2 ts=2 sts=2 ff=unix fenc=utf8 syntax=htmldjango: -->
 
