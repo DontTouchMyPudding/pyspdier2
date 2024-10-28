@@ -537,6 +537,19 @@ span.element > ul > li:hover {
     height: 100%
 }
 
-.
+#generate-code{
+    margin-top: 20px;
+    height: 32px;
+    border-radius: 8px;
+    border: none;
+    background: #1647BC;
+    color: white;
+    box-sizing: border-box;
+    padding: 8px;
+    cursor: pointer;
+}
+#generate-code:hover{
+    background: #1647EC;
+}
 
 /*# sourceMappingURL=debug.min.css.map*/

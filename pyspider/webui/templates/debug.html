@@ -101,30 +101,30 @@
             <div id="save-task-btn">save</div>
         </div>
         <div id="popup">
-            <form class="form">
+            <form id="form">
                 <section class="basic-config">
                     <h3>基础配置项</h3>
                     <section class="form-block">
                         <section class="form-item">
                             <label>URL</label>
-                            <input type="text"/>
+                            <input type="text" name="start_url"/>
                         </section>
-                        <section class="form-item">
-                            <label>浏览器</label>
-                            <input type="text"/>
-                        </section>
-                        <section class="form-item">
-                            <label>超时时间</label>
-                            <input type="text"/>
-                        </section>
-                        <section class="form-item">
-                            <label>使用代理</label>
-                            <input type="text"/>
-                        </section>
-                        <section class="form-item">
-                            <label>翻页数</label>
-                            <input type="text"/>
-                        </section>
+                        {#                        <section class="form-item">#}
+                        {#                            <label>浏览器</label>#}
+                        {#                            <input type="text" name="webDevice"/>#}
+                        {#                        </section>#}
+                        {#                        <section class="form-item">#}
+                        {#                            <label>超时时间</label>#}
+                        {#                            <input type="text" name="timeout"/>#}
+                        {#                        </section>#}
+                        {#                        <section class="form-item">#}
+                        {#                            <label>使用代理</label>#}
+                        {#                            <input type="text" name="proxy"/>#}
+                        {#                        </section>#}
+                        {#                        <section class="form-item">#}
+                        {#                            <label>翻页数</label>#}
+                        {#                            <input type="text" name="pageNumber"/>#}
+                        {#                        </section>#}
                     </section>
                 </section>
                 <section class="list-config">
@@ -132,36 +132,32 @@
                     <section class="form-block">
                         <section class="form-item">
                             <label>详情入口</label>
-                            <input type="text"/>
+                            <input type="text" name="detail_input_xpath"/>
                         </section>
                         <section class="form-item">
                             <label>下页入口</label>
-                            <input type="text"/>
+                            <input type="text" name="next_page_xpath"/>
                         </section>
                         <section class="form-item">
                             <label>标题选择</label>
-                            <input type="text"/>
+                            <input type="text" name="index_title_xpath"/>
                         </section>
-                        <section class="form-item">
-                            <label>发布日期</label>
-                            <input type="text"/>
-                        </section>
-                        <section class="form-item">
-                            <label>点击选择</label>
-                            <input type="text"/>
-                        </section>
-                        <section class="form-item">
-                            <label>点击等待</label>
-                            <input type="text"/>
-                        </section>
-                        <section class="form-item">
-                            <label>翻页等待</label>
-                            <input type="text"/>
-                        </section>
-                        <section class="form-item">
-                            <label>子窗序号</label>
-                            <input type="text"/>
-                        </section>
+                        {#                        <section class="form-item">#}
+                        {#                            <label>点击选择</label>#}
+                        {#                            <input type="text" name="clickSelect"/>#}
+                        {#                        </section>#}
+                        {#                        <section class="form-item">#}
+                        {#                            <label>点击等待</label>#}
+                        {#                            <input type="text" name="clickWait"/>#}
+                        {#                        </section>#}
+                        {#                        <section class="form-item">#}
+                        {#                            <label>翻页等待</label>#}
+                        {#                            <input type="text" name="nextWait"/>#}
+                        {#                        </section>#}
+                        {#                        <section class="form-item">#}
+                        {#                            <label>子窗序号</label>#}
+                        {#                            <input type="text" name="iframeNumber"/>#}
+                        {#                        </section>#}
                     </section>
 
                 </section>
@@ -170,35 +166,35 @@
                     <section class="form-block">
                         <section class="form-item">
                             <label>内容选择</label>
-                            <input type="text"/>
+                            <input type="text" name="detail_xpath"/>
                         </section>
-                        <section class="form-item">
-                            <label>文件选择</label>
-                            <input type="text"/>
-                        </section>
+                        {#                        <section class="form-item">#}
+                        {#                            <label>文件选择</label>#}
+                        {#                            <input type="text" name="fileXpath"/>#}
+                        {#                        </section>#}
                         <section class="form-item">
                             <label>标题选择</label>
-                            <input type="text"/>
+                            <input type="text" name="title_xpath"/>
                         </section>
                         <section class="form-item">
                             <label>发布日期</label>
-                            <input type="text"/>
+                            <input type="text" name="publish_time"/>
                         </section>
-                        <section class="form-item">
-                            <label>等待选择</label>
-                            <input type="text"/>
-                        </section>
-                        <section class="form-item">
-                            <label>强制等待</label>
-                            <input type="text"/>
-                        </section>
-                        <section class="form-item">
-                            <label>子窗序号</label>
-                            <input type="text"/>
-                        </section>
+                        {#                        <section class="form-item">#}
+                        {#                            <label>等待选择</label>#}
+                        {#                            <input type="text" name="selectWait"/>#}
+                        {#                        </section>#}
+                        {#                        <section class="form-item">#}
+                        {#                            <label>强制等待</label>#}
+                        {#                            <input type="text" name="forceWait"/>#}
+                        {#                        </section>#}
+                        {#                        <section class="form-item">#}
+                        {#                            <label>子窗序号</label>#}
+                        {#                            <input type="text" name="iframeNumber"/>#}
+                        {#                        </section>#}
                     </section>
-
                 </section>
+                <button type="button" id="generate-code">生成代码</button>
             </form>
         </div>
         <div class="overlay" style="display: none;"></div>
@@ -207,8 +203,68 @@
 </section>
 
 <script>
-    var task_content = {{ task | tojson | tojson | safe }};
-    var script_content = {{ script | tojson | safe }};
+    const task_content = {{ task | tojson | tojson | safe }};
+    const script_content = {{ script | tojson | safe }};
+    $(document).ready(() => {
+        // 根据代码初始化表单配置项
+        const initConfig = () => {
+            const start_url_pattern = /"start_url": "(.*?)",/;
+            const start_url_match = script_content.match(start_url_pattern)
+            if (start_url_match) {
+                $("input[name='start_url']").val(start_url_match[1])
+            }
+            const detail_input_xpath_pattern = /"detail_input_xpath": "(.*?)",/
+            const detail_link_match = script_content.match(detail_input_xpath_pattern)
+            if (detail_link_match) {
+                $("input[name='detail_input_xpath']").val(detail_link_match[1])
+            }
+            const next_page_xpath_pattern = /"next_page_xpath": "(.*?)",/
+            const next_page_xpath_match = script_content.match(next_page_xpath_pattern)
+            if (next_page_xpath_match) {
+                $("input[name='next_page_xpath']").val(next_page_xpath_match[1])
+            }
+            const index_title_xpath_pattern = /"index_title_xpath": "(.*?)",/
+            const index_title_xpath_match = script_content.match(index_title_xpath_pattern)
+            if (index_title_xpath_match) {
+                $("input[name='index_title_xpath']").val(index_title_xpath_match[1])
+            }
+            const detail_xpath_pattern = /"detail_xpath": "(.*?)",/
+            const detail_xpath_match = script_content.match(detail_xpath_pattern)
+            if (detail_xpath_match) {
+                $("input[name='detail_xpath']").val(detail_xpath_match[1])
+            }
+            const title_xpath_pattern = /"title_xpath": "(.*?)",/
+            const title_xpath_match = script_content.match(title_xpath_pattern)
+            if (title_xpath_match) {
+                $("input[name='title_xpath']").val(title_xpath_match[1])
+            }
+            const publish_time_pattern = /"publish_time": "(.*?)",/
+            const publish_time_match = script_content.match(publish_time_pattern)
+            if (publish_time_match) {
+                $("input[name='publish_time']").val(publish_time_match[1])
+            }
+        }
+        initConfig()
+
+        $("#code-task-btn").on("click", () => {
+            $("#popup").css("display", "none")
+        })
+        $("#config-task-btn").on("click", () => {
+            $("#popup").css("display", "block")
+        })
+        $('#generate-code').on("click", () => {
+            const data = $("form").serializeArray();
+            let updatedScript = script_content;
+            data.forEach(field => {
+                const placeholder = new RegExp(`"${field.name}":\\s*"[^"]*"`, 'g');
+                updatedScript = updatedScript.replace(placeholder, `"${field.name}": "${field.value}"`);
+            });
+            if (window.python_editor){
+                window.python_editor.setValue(updatedScript)
+            }
+            console.log(updatedScript)
+        })
+    })
 </script>
 <script src="{{ url_for('static', filename='debug.min.js') }}"></script>
 </body>

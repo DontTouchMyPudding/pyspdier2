@@ -19,7 +19,7 @@ try:
 except ImportError:
     from flask.ext import login
 
-from pyspider.libs import utils, sample_handler, dataurl
+from pyspider.libs import utils, template, dataurl
 from pyspider.libs.response import rebuild_response
 from pyspider.processor.project_module import ProjectManager, ProjectFinder
 from .app import app
@@ -32,7 +32,7 @@ default_task = {
         'callback': 'on_start',
     },
 }
-default_script = inspect.getsource(sample_handler)
+default_script = inspect.getsource(template)
 
 
 @app.route('/debug/<project>', methods=['GET', 'POST'])
@@ -45,8 +45,6 @@ def debug(project):
         script = info['script']
     else:
         script = (default_script
-                  .replace('__DATE__', datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
-                  .replace('__PROJECT_NAME__', project)
                   .replace('__START_URL__', request.values.get('start-urls') or '__START_URL__'))
 
     taskid = request.args.get('taskid')
@@ -181,7 +179,7 @@ def save(project):
         info = {
             'script': script,
         }
-        if project_info.get('status') in ('DEBUG', 'RUNNING', ):
+        if project_info.get('status') in ('DEBUG', 'RUNNING',):
             info['status'] = 'CHECKING'
         projectdb.update(project, info)
     else:
